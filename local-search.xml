@@ -4,12 +4,701 @@
   
   
   <entry>
+    <title>关注</title>
+    <link href="/2022/08/06/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
+    <url>/2022/08/06/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>系统设计</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>分布式锁</title>
+    <link href="/2022/08/06/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/"/>
+    <url>/2022/08/06/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>分布式</category>
+      
+      <category>分布式锁</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>分布式事务</title>
+    <link href="/2022/08/06/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/"/>
+    <url>/2022/08/06/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>分布式</category>
+      
+      <category>分布式事务</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>分布式缓存</title>
+    <link href="/2022/08/06/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/"/>
+    <url>/2022/08/06/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>分布式</category>
+      
+      <category>分布式缓存</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>工厂模式</title>
+    <link href="/2022/08/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/"/>
+    <url>/2022/08/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>设计模式</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>单例模式</title>
+    <link href="/2022/08/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
+    <url>/2022/08/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>设计模式</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>DFS</title>
+    <link href="/2022/08/06/%E7%AE%97%E6%B3%95/DFS/"/>
+    <url>/2022/08/06/%E7%AE%97%E6%B3%95/DFS/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>算法</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>BFS</title>
+    <link href="/2022/08/06/%E7%AE%97%E6%B3%95/BFS/"/>
+    <url>/2022/08/06/%E7%AE%97%E6%B3%95/BFS/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>算法</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>动态规划</title>
+    <link href="/2022/08/06/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    <url>/2022/08/06/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>算法</category>
+      
+      <category>动态规划</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>netty</title>
+    <link href="/2022/08/06/%E6%A1%86%E6%9E%B6/netty/"/>
+    <url>/2022/08/06/%E6%A1%86%E6%9E%B6/netty/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>框架</category>
+      
+      <category>Netty</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>jvm内存模型</title>
+    <link href="/2022/08/05/jvm/jvm%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/"/>
+    <url>/2022/08/05/jvm/jvm%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>JVM</category>
+      
+      <category>内存模型</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>tidb</title>
+    <link href="/2022/08/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/tidb/"/>
+    <url>/2022/08/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/tidb/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>大数据</category>
+      
+      <category>TiDB</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>nio</title>
+    <link href="/2022/08/05/IO/nio/"/>
+    <url>/2022/08/05/IO/nio/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>IO</category>
+      
+      <category>nio</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>bio</title>
+    <link href="/2022/08/05/IO/bio/"/>
+    <url>/2022/08/05/IO/bio/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>IO</category>
+      
+      <category>bio</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>aio</title>
+    <link href="/2022/08/05/IO/aio/"/>
+    <url>/2022/08/05/IO/aio/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>IO</category>
+      
+      <category>aio</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>dubbo</title>
+    <link href="/2022/08/05/RPC/dubbo/"/>
+    <url>/2022/08/05/RPC/dubbo/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>RPC</category>
+      
+      <category>dubbo</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>ClickHouse</title>
+    <link href="/2022/08/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/ClickHouse/"/>
+    <url>/2022/08/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/ClickHouse/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>大数据</category>
+      
+      <category>ClickHouse</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Mybatis</title>
+    <link href="/2022/08/05/%E6%A1%86%E6%9E%B6/Mybatis/"/>
+    <url>/2022/08/05/%E6%A1%86%E6%9E%B6/Mybatis/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>框架</category>
+      
+      <category>Mybatis</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>SpringCloud</title>
+    <link href="/2022/08/05/%E6%A1%86%E6%9E%B6/SpringCloud/"/>
+    <url>/2022/08/05/%E6%A1%86%E6%9E%B6/SpringCloud/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>框架</category>
+      
+      <category>SpringCloud</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>SpringBoot</title>
+    <link href="/2022/08/05/%E6%A1%86%E6%9E%B6/SpringBoot/"/>
+    <url>/2022/08/05/%E6%A1%86%E6%9E%B6/SpringBoot/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>框架</category>
+      
+      <category>SpringBoot</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Spring</title>
+    <link href="/2022/08/05/%E6%A1%86%E6%9E%B6/Spring/"/>
+    <url>/2022/08/05/%E6%A1%86%E6%9E%B6/Spring/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>框架</category>
+      
+      <category>Spring</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Paxos</title>
+    <link href="/2022/08/05/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E5%8D%8F%E8%AE%AE/Paxos/"/>
+    <url>/2022/08/05/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E5%8D%8F%E8%AE%AE/Paxos/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>分布式</category>
+      
+      <category>分布式协议</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>BASE</title>
+    <link href="/2022/08/05/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E5%8D%8F%E8%AE%AE/BASE/"/>
+    <url>/2022/08/05/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E5%8D%8F%E8%AE%AE/BASE/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>分布式</category>
+      
+      <category>分布式协议</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>ACID</title>
+    <link href="/2022/08/05/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E5%8D%8F%E8%AE%AE/ACID/"/>
+    <url>/2022/08/05/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E5%8D%8F%E8%AE%AE/ACID/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>分布式</category>
+      
+      <category>分布式协议</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>CAP</title>
+    <link href="/2022/08/05/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E5%8D%8F%E8%AE%AE/CAP/"/>
+    <url>/2022/08/05/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E5%8D%8F%E8%AE%AE/CAP/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>分布式</category>
+      
+      <category>分布式协议</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>拜占庭将军问题</title>
+    <link href="/2022/08/05/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E5%8D%8F%E8%AE%AE/%E6%8B%9C%E5%8D%A0%E5%BA%AD%E5%B0%86%E5%86%9B%E9%97%AE%E9%A2%98/"/>
+    <url>/2022/08/05/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E5%8D%8F%E8%AE%AE/%E6%8B%9C%E5%8D%A0%E5%BA%AD%E5%B0%86%E5%86%9B%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>分布式</category>
+      
+      <category>分布式协议</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>垃圾回收</title>
+    <link href="/2022/08/05/jvm/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/"/>
+    <url>/2022/08/05/jvm/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>JVM</category>
+      
+      <category>垃圾回收</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>类加载机制</title>
+    <link href="/2022/08/05/jvm/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/"/>
+    <url>/2022/08/05/jvm/%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>JVM</category>
+      
+      <category>类加载机制</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>ddd</title>
+    <link href="/2022/08/05/DDD/ddd/"/>
+    <url>/2022/08/05/DDD/ddd/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>DDD</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>mysql</title>
     <link href="/2022/08/05/%E5%AD%98%E5%82%A8/mysql/"/>
     <url>/2022/08/05/%E5%AD%98%E5%82%A8/mysql/</url>
     
     <content type="html"><![CDATA[]]></content>
     
+    
+    <categories>
+      
+      <category>存储</category>
+      
+      <category>mysql</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>zk</title>
+    <link href="/2022/08/05/%E4%B8%AD%E9%97%B4%E4%BB%B6/zk/"/>
+    <url>/2022/08/05/%E4%B8%AD%E9%97%B4%E4%BB%B6/zk/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>中间件</category>
+      
+      <category>zk</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>es</title>
+    <link href="/2022/08/05/%E4%B8%AD%E9%97%B4%E4%BB%B6/es/"/>
+    <url>/2022/08/05/%E4%B8%AD%E9%97%B4%E4%BB%B6/es/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>中间件</category>
+      
+      <category>es</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>kafka</title>
+    <link href="/2022/08/05/%E4%B8%AD%E9%97%B4%E4%BB%B6/kafka/"/>
+    <url>/2022/08/05/%E4%B8%AD%E9%97%B4%E4%BB%B6/kafka/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>中间件</category>
+      
+      <category>kafka</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>redis</title>
+    <link href="/2022/08/05/%E4%B8%AD%E9%97%B4%E4%BB%B6/redis/"/>
+    <url>/2022/08/05/%E4%B8%AD%E9%97%B4%E4%BB%B6/redis/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>中间件</category>
+      
+      <category>redis</category>
+      
+    </categories>
     
     
   </entry>
@@ -71,25 +760,6 @@
       <category>大数据</category>
       
       <category>hadoop</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>用户画像</title>
-    <link href="/2022/08/05/%E6%A0%87%E7%AD%BE/"/>
-    <url>/2022/08/05/%E6%A0%87%E7%AD%BE/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-    
-    <categories>
-      
-      <category>用户画像</category>
       
     </categories>
     
