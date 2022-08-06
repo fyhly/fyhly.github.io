@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://example.com/2022/08/06/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/HDFS/</loc>
+    <lastmod>2022-08-06</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2022/08/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/Hadoop%E7%AE%80%E4%BB%8B/</loc>
+    <lastmod>2022-08-06</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2022/08/05/%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F/%E6%A0%87%E7%AD%BE/</loc>
+    <lastmod>2022-08-06</lastmod>
+  </url>
+  <url>
     <loc>http://example.com/2022/08/06/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</loc>
     <lastmod>2022-08-05</lastmod>
   </url>
@@ -142,10 +154,6 @@
   </url>
   <url>
     <loc>http://example.com/2022/08/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/flink/</loc>
-    <lastmod>2022-08-05</lastmod>
-  </url>
-  <url>
-    <loc>http://example.com/2022/08/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/</loc>
     <lastmod>2022-08-05</lastmod>
   </url>
 </urlset> 
