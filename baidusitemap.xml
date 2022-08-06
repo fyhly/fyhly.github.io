@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://example.com/2022/08/06/%E5%A4%A7%E6%95%B0%E6%8D%AE/HBase/HBase/</loc>
+    <lastmod>2022-08-06</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2022/08/06/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/Ozone/</loc>
+    <lastmod>2022-08-06</lastmod>
+  </url>
+  <url>
     <loc>http://example.com/2022/08/06/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/YARN/</loc>
     <lastmod>2022-08-06</lastmod>
   </url>
   <url>
-    <loc>http://example.com/2022/08/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/Hadoop/</loc>
+    <loc>http://example.com/2022/08/06/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/MapReduce/</loc>
     <lastmod>2022-08-06</lastmod>
   </url>
   <url>
-    <loc>http://example.com/2022/08/06/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/MapReduce/</loc>
+    <loc>http://example.com/2022/08/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/Hadoop/</loc>
     <lastmod>2022-08-06</lastmod>
   </url>
   <url>

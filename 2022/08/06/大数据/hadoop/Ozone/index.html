@@ -16,19 +16,28 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="spark">
-<meta property="og:url" content="http://example.com/2022/08/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/spark/index.html">
+    <meta name="description" content="Ozone简介NameNode的问题 HDFS虽然有了Federation，元数据容量可以通过拆分多个NameNode进行水平扩展，但是单个NameNode仍然存在着容量瓶颈，这是设计造成的。 一般来说当一个NameNode的block数和文件数总和在8～10亿左右时，就差不多是极限了。 此时NameNode也需要超过30分钟，FullGC也变的频繁起来。  Ozone的产生 HDFS最初的设计是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ozone">
+<meta property="og:url" content="http://example.com/2022/08/06/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/Ozone/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Ozone简介NameNode的问题 HDFS虽然有了Federation，元数据容量可以通过拆分多个NameNode进行水平扩展，但是单个NameNode仍然存在着容量瓶颈，这是设计造成的。 一般来说当一个NameNode的block数和文件数总和在8～10亿左右时，就差不多是极限了。 此时NameNode也需要超过30分钟，FullGC也变的频繁起来。  Ozone的产生 HDFS最初的设计是">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-08-05T15:28:48.000Z">
-<meta property="article:modified_time" content="2022-08-05T15:29:28.457Z">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806191928617.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806192029685.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806192159134.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806192227135.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806192427041.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806192448239.png">
+<meta property="article:published_time" content="2022-08-06T11:11:52.000Z">
+<meta property="article:modified_time" content="2022-08-06T11:25:08.099Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806191928617.png">
   
   
   
-  <title>spark - Hexo</title>
+  <title>Ozone - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -194,7 +203,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="spark"></span>
+            <span id="subtitle" data-typed-text="Ozone"></span>
           
         </div>
 
@@ -210,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 words
+          1.6k words
         
       </span>
     
@@ -221,7 +230,7 @@
         
         
         
-          1 mins
+          14 mins
         
       </span>
     
@@ -259,12 +268,89 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">spark</h1>
+            <h1 style="display: none">Ozone</h1>
             
             
               <div class="markdown-body">
                 
-                
+                <h1 id="Ozone简介"><a href="#Ozone简介" class="headerlink" title="Ozone简介"></a>Ozone简介</h1><h2 id="NameNode的问题"><a href="#NameNode的问题" class="headerlink" title="NameNode的问题"></a>NameNode的问题</h2><ul>
+<li>HDFS虽然有了Federation，元数据容量可以通过拆分多个NameNode进行水平扩展，但是单个NameNode仍然存在着容量瓶颈，这是设计造成的。</li>
+<li>一般来说当一个NameNode的block数和文件数总和在8～10亿左右时，就差不多是极限了。</li>
+<li>此时NameNode也需要超过30分钟，FullGC也变的频繁起来。</li>
+</ul>
+<h3 id="Ozone的产生"><a href="#Ozone的产生" class="headerlink" title="Ozone的产生"></a>Ozone的产生</h3><ul>
+<li>HDFS最初的设计是为了存储大文件（GB），但在使用的时候难免会产生大量小文件。</li>
+<li>Ozone是类似S3的对象存储系统，目的是解决HDFS上的小文件问题。</li>
+<li>所以Ozone是Object store in HDFS，O就是Object的首字母</li>
+<li>Ozone提供了一套Restful的API和RPC接口。OzoneFS是兼容HadoopFS的</li>
+<li>所以什么时候该选择使用Ozone呢？<ul>
+<li>如果存储里有大量小文件</li>
+<li>如果已经使用了HDFS</li>
+<li>如果已经使用了S3</li>
+<li>如果正在往K8S迁移且需要一个大数据存储系统</li>
+</ul>
+</li>
+</ul>
+<h2 id="Ozone的基本概念"><a href="#Ozone的基本概念" class="headerlink" title="Ozone的基本概念"></a>Ozone的基本概念</h2><ul>
+<li>Block<ul>
+<li>Block 是数据块对象，真实存储用户的数据。此外，Block中包含存储的key值与存储此Block的所有Container的位置信息。</li>
+</ul>
+</li>
+<li>Container<ul>
+<li>Container是一个逻辑概念，是由一些相互之间没有关系的Block 组成的集合。每个Container有大小（默认5G），且存在于DataNode中。</li>
+<li>Ozone的容器被一个叫做SCM（StorageContainerManager）的服务所管理。</li>
+</ul>
+</li>
+<li>Pipeline<ul>
+<li>Pipeline 来保证Container实现想要的副本数（默认3副本）</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806191928617.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>Storage Container Manager(SCM)<ul>
+<li>管理Container, Pipelines和Datanode，为KeySpaceManager提供Block和Container的操作和信息。SCM也监听DataNode 发来的心跳信息，作为DataNode manager的角色, 保证和维护集群所需的数据冗余级别。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806192029685.png" srcset="/img/loading.gif" lazyload alt="SCM"></p>
+<ul>
+<li>Ozone Manager（OM）<ul>
+<li>管理Ozone的Namespace， 类似于现有HDFS中的NameNode的角色，提供元数据的新建，更新和删除操作。存储了Ozone的元数据信息，这些元数据信息包括Volume、Bucket和Key，底层通过Ratis（实现了Raft协议） 扩展元数据的副本数来实现元数据的HA。</li>
+</ul>
+</li>
+<li>Volume<ul>
+<li>Volume只能由admin进行创建，类似一个home目录或一级目录。Volume用来存储Bucket。</li>
+</ul>
+</li>
+<li>Bucket<ul>
+<li>Bucket也是一个集合，用户可以在一个Volume中创建任意数量的Bucket ， Bucket中包含Key。</li>
+</ul>
+</li>
+<li>Key<ul>
+<li>Key就是存储对象的键，键值对象存储类似AWS的S3服务。Key和Object都是字节数组。</li>
+</ul>
+</li>
+<li>Object<ul>
+<li>Object被volumeName&#x2F;bucketName&#x2F;key 3部分所唯一标识</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806192159134.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="Ozone架构"><a href="#Ozone架构" class="headerlink" title="Ozone架构"></a>Ozone架构</h1><p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806192227135.png" srcset="/img/loading.gif" lazyload alt="Ozone架构"></p>
+<h2 id="Ozone如何进行元数据管理"><a href="#Ozone如何进行元数据管理" class="headerlink" title="Ozone如何进行元数据管理"></a>Ozone如何进行元数据管理</h2><ul>
+<li>KeySpaceManager类似NameNode，也存储了上亿的元数据，在Ozone文档设计中，是明确说明能够支持存储10亿数量级别的Key的存储的，所以不可能如同NameNode一样全部放在内存中。</li>
+<li>而是使用了外部存储LevelDB，只把近期活跃的数据hold在内存里。</li>
+<li>LevelDB的数据存储格式是KV存储的，所以Ozone存入内容的格式如下：<ul>
+<li>Volume&#x2F;Bucket&#x2F;Key—-&gt;ObjectInfo</li>
+</ul>
+</li>
+<li>KSM用到1个LevelDB store，SCM是3个，总共就是4个。</li>
+</ul>
+<p>![](&#x2F;Users&#x2F;liuyi05&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20220806192332358.png)</p>
+<h1 id="Ozone读写过程"><a href="#Ozone读写过程" class="headerlink" title="Ozone读写过程"></a>Ozone读写过程</h1><h2 id="Ozone读过程"><a href="#Ozone读过程" class="headerlink" title="Ozone读过程"></a>Ozone读过程</h2><p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806192427041.png" srcset="/img/loading.gif" lazyload alt="Ozone读流程"></p>
+<h2 id="Ozone写过程"><a href="#Ozone写过程" class="headerlink" title="Ozone写过程"></a>Ozone写过程</h2><p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806192448239.png" srcset="/img/loading.gif" lazyload alt="Ozone写流程"></p>
+
                 
               </div>
             
@@ -287,7 +373,7 @@
   
     <span>></span>
     
-  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/spark/" class="category-chain-item">spark</a>
+  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/" class="category-chain-item">Hadoop</a>
   
   
 
@@ -311,9 +397,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/08/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/flink/" title="flink">
+                      <a href="/2022/08/06/%E5%A4%A7%E6%95%B0%E6%8D%AE/HBase/HBase/" title="HBase">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">flink</span>
+                        <span class="hidden-mobile">HBase</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -321,8 +407,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/08/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/Hadoop/" title="Hadoop">
-                        <span class="hidden-mobile">Hadoop</span>
+                      <a href="/2022/08/06/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/YARN/" title="YARN">
+                        <span class="hidden-mobile">YARN</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
