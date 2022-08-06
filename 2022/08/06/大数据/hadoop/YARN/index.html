@@ -1,0 +1,783 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="YARN的产生和发展YARN的产生2013年，Hadoop 2.0发布，引入YARN、HDFS HA、Federation  MapReduceV1的不足 扩展性差 JobTracker既要做资源管理，又要做任务监控，job的最大并发数受限制。   可用性差 JobTracker存在单点故障问题   资源利用率低 Map Slot和Reduce Slot的设计无法分享，造成资源浪费   无法支持更">
+<meta property="og:type" content="article">
+<meta property="og:title" content="YARN">
+<meta property="og:url" content="http://example.com/2022/08/06/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/YARN/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="YARN的产生和发展YARN的产生2013年，Hadoop 2.0发布，引入YARN、HDFS HA、Federation  MapReduceV1的不足 扩展性差 JobTracker既要做资源管理，又要做任务监控，job的最大并发数受限制。   可用性差 JobTracker存在单点故障问题   资源利用率低 Map Slot和Reduce Slot的设计无法分享，造成资源浪费   无法支持更">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806183233329.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806183553960.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806183732398.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806184650127.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806183852093.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806183752067.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806184018079.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806184113160.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806184128690.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806184426770.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806185321850.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806185346362.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806185513330.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806185542749.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806185742082.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806185825508.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806190058121.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806190634986.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806190720439.png">
+<meta property="article:published_time" content="2022-08-06T10:29:49.000Z">
+<meta property="article:modified_time" content="2022-08-06T11:08:33.484Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806183233329.png">
+  
+  
+  
+  <title>YARN - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 30vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>梵音海</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="YARN"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-06 18:29" pubdate>
+          August 6, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.7k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          48 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">YARN</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="YARN的产生和发展"><a href="#YARN的产生和发展" class="headerlink" title="YARN的产生和发展"></a>YARN的产生和发展</h1><h2 id="YARN的产生"><a href="#YARN的产生" class="headerlink" title="YARN的产生"></a>YARN的产生</h2><p>2013年，Hadoop 2.0发布，引入YARN、HDFS HA、Federation</p>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806183233329.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="MapReduceV1的不足"><a href="#MapReduceV1的不足" class="headerlink" title="MapReduceV1的不足"></a>MapReduceV1的不足</h2><ul>
+<li>扩展性差<ul>
+<li>JobTracker既要做资源管理，又要做任务监控，job的最大并发数受限制。</li>
+</ul>
+</li>
+<li>可用性差<ul>
+<li>JobTracker存在单点故障问题</li>
+</ul>
+</li>
+<li>资源利用率低<ul>
+<li>Map Slot和Reduce Slot的设计无法分享，造成资源浪费</li>
+</ul>
+</li>
+<li>无法支持更多计算模型<ul>
+<li>只能进行MapReduce计算模型，无法调度流式计算、迭代计算、DAG计算等模型。</li>
+</ul>
+</li>
+</ul>
+<h2 id="YARN的设计思路"><a href="#YARN的设计思路" class="headerlink" title="YARN的设计思路"></a>YARN的设计思路</h2><ul>
+<li>Yet Another Resource Negotiator</li>
+<li>将资源管理和作业监控查分出独立的进程。</li>
+<li>资源管理和应用无关，每个应用有单独的作业监控进程。</li>
+</ul>
+<h1 id="YARN架构"><a href="#YARN架构" class="headerlink" title="YARN架构"></a>YARN架构</h1><ul>
+<li>ResourceManager：全局的资源管理器，负责整个系统的资源管理和分配<ul>
+<li>处理客户端请求</li>
+<li>启动&#x2F;监控ApplicationMaster</li>
+<li>监控NodeManager</li>
+<li>资源分配和调度</li>
+</ul>
+</li>
+<li>NodeManager：驻留在一个YARN集群中的每个节点上的代理<ul>
+<li>单个节点的资源管理</li>
+<li>处理来自ResourceManger的命令</li>
+<li>处理来自ApplicationMaster的命令</li>
+</ul>
+</li>
+<li>ApplicationMaster：应用程序管理器，负责系统中所有应用程序的管理工作<ul>
+<li>数据切分</li>
+<li>为应用程序申请资源，并进行分配</li>
+<li>任务监控和容错</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806183553960.png" srcset="/img/loading.gif" lazyload alt="YARN架构"></p>
+<h2 id="ResourceManager"><a href="#ResourceManager" class="headerlink" title="ResourceManager"></a>ResourceManager</h2><p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806183732398.png" srcset="/img/loading.gif" lazyload alt="ResourceManager"></p>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806184650127.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="NodeManager"><a href="#NodeManager" class="headerlink" title="NodeManager"></a>NodeManager</h2><p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806183852093.png" srcset="/img/loading.gif" lazyload alt="NodeManager"></p>
+<h2 id="ApplicationMaster"><a href="#ApplicationMaster" class="headerlink" title="ApplicationMaster"></a>ApplicationMaster</h2><p>ApplicationMaster实际上是特定计算框架的一个实例，每种计算框架都有自己独特的ApplicationMaster，负责与ResourceManager协商资源，并和NodeManager协同来执行和监控Container。MapReduce只是可以运行在YARN上一种计算框架。</p>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806183752067.png" srcset="/img/loading.gif" lazyload alt="ApplicationMaster"></p>
+<h1 id="YARN工作流程"><a href="#YARN工作流程" class="headerlink" title="YARN工作流程"></a>YARN工作流程</h1><p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806184018079.png" srcset="/img/loading.gif" lazyload alt="YARN工作流程"></p>
+<h1 id="YARN的目标"><a href="#YARN的目标" class="headerlink" title="YARN的目标"></a>YARN的目标</h1><p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806184113160.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806184128690.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="YARN-Container"><a href="#YARN-Container" class="headerlink" title="YARN Container"></a>YARN Container</h1><ol>
+<li><p>发出资源请求后，资源调度器并不会立马为它返回满足要求的资源。应用程序的ApplicationMaster不断与ResourceManager通信，探测分配到的资源。</p>
+</li>
+<li><p>ApplicatioMaster可从资源调度器获取以Container表示的资源，这里的Container可看做一个可序列化Java对象，包含的字段信息：</p>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806184426770.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>ApplicationMaster收到Container后，将运行在该Container的任务所需的运行环境信息（包含运行命令、环境变量、依赖的外部文件等）连同Container中的资源信息封装到StartContainerRequest对象中，发送给NodeManager，以启动该任务。</p>
+</li>
+<li><p>Container是YARN中资源的抽象，它封装了某个节点上一定量的资源（CPU和内存两类资源）。它跟Linux Container没有任何关系，仅仅是YARN提出的一个概念（从实现上看，可看做一个可序列化&#x2F;反序列化的Java类）。</p>
+</li>
+<li><p>Container由ApplicationMaster向ResourceManager申请的，由ResouceManager中的资源调度器异步分配给ApplicationMaster。</p>
+</li>
+<li><p>Container的运行是由ApplicationMaster向资源所在的NodeManager发起的，Container运行时需提供内部执行的任务命令（可以使任何命令，比如java、Python、C++进程启动命令均可）以及该命令执行所需的环境变量和外部资源（比如词典文件、可执行文件、jar包等）。</p>
+</li>
+</ol>
+<h1 id="资源调度器"><a href="#资源调度器" class="headerlink" title="资源调度器"></a>资源调度器</h1><h2 id="资源调度算法"><a href="#资源调度算法" class="headerlink" title="资源调度算法"></a>资源调度算法</h2><p>调度算法在是整个资源管理系统中的一个重要组成部分，简单地说，调度算法的作用是决定一个计算任务需要放在集群中的哪台机器上面。</p>
+<h3 id="先来后到调度（-FIFO）"><a href="#先来后到调度（-FIFO）" class="headerlink" title="先来后到调度（ FIFO）"></a>先来后到调度（ FIFO）</h3><p>基本思路：先来的先被调用，先分配CPU、内存等资源，后来的在队列等待。</p>
+<p>优点：这种方式适合平均计算时间、耗用资源情况差不多的作业，为了让后来的作业有机会提前运行，通常还会匹配优先级，即优先级高的先运行，优先级一样的按先来后到方式运行。</p>
+<p>缺点：但是实际操作的时候，优先级容易碰到问题，如果用户都认为自己的作业优先，把自己提交的作业优先级都设置的最高，这样排在后面的作业还是要等很久才被调度，特别是前面有一个耗用资源特别久的作业，比如占用几个小时乃至几天的大部分机器的CPU和内存的训练算法作业，导致排在后面的大量很短时间运行完、耗用资源比较少的作业很久才被调度，实际上他们优先调度更适合。</p>
+<h3 id="短任务优先调度（Shortest-Job-First，SJF）"><a href="#短任务优先调度（Shortest-Job-First，SJF）" class="headerlink" title="短任务优先调度（Shortest Job First，SJF）"></a>短任务优先调度（Shortest Job First，SJF）</h3><p>为了改进FIFO算法，减少平均周转时间，人们提出了短作业优先算法。</p>
+<p>基本思路：各个任务在开始执行之前，必须事先预计好它的执行时间，然后调度器将根据这些时间，从中选择用时较短的任务优先执行。</p>
+<p>优点：这种方式已经解决FIFO算法的缺点，不会让短任务因为前面出现的大任务而堆积。</p>
+<p>缺点： 但是这样也是有问题的，如果一个用户一次提交了大量作业，就为了优先得到执行，如果他提交的作业时间都比较短，那永远都是这个用户在占用计算平台集群资源，其他用户永远在等。</p>
+<h3 id="时间片轮转调度（Round-Robin，RR）"><a href="#时间片轮转调度（Round-Robin，RR）" class="headerlink" title="时间片轮转调度（Round Robin，RR）"></a>时间片轮转调度（Round Robin，RR）</h3><p>基本思路是：把系统当中的所有就绪任务按照先来先服务的原则，排成一个队列，然后再每次调度的时候，把处理器分派给队列当中的第一个任务，让它去执行一小段CPU时间（即时间片，timeslice）。当这个时间片结束时，如果任务还没有执行完成的话，将会发生时钟中断，在时钟中断里面，调度器将会暂停当前任务的执行，并把它送到就绪队列的末尾，然后执行当前的队首任务。反之，如果一个任务在它的时间片用完之前就已经结束了或者阻塞了，那么它就会立即让出CPU给其他任务。</p>
+<p>优点： 跟任务的大小无关，大家获得公平的资源分配。</p>
+<p>缺点：该算法要求计算框架支持中断。此外，时间片的大小要适当选取，如果选择不当，将会影响到系统的性能和效率。如果时间片太大，每个任务都在一个时间片内完成，这就退化为先来先服务算法了，如果太小， 任务之间的切换次数增加，从而增大了系统的管理开销，降低了CPU的使用效率。</p>
+<h3 id="最大最小公平调度（Min-Max-Fair）"><a href="#最大最小公平调度（Min-Max-Fair）" class="headerlink" title="最大最小公平调度（Min-Max Fair）"></a>最大最小公平调度（Min-Max Fair）</h3><p>基本思路： 将资源平分成n份,每份都是S&#x2F;n,把每份分给相应的用户，如果超过了用户的需求，就回收超过的部分， 然后把总体回收的资源，平均分给上一轮分配中尚未得到满足的用户，依次类推，直到没有回收的资源为止。</p>
+<p>加权最大最小公平调度（Weighted Min-Max Fair）</p>
+<p>基本思路： 令W&#x3D;w1 + w2+ … + wn, 将资源按照权重分成n份，每份分别是：S<em>w1&#x2F;W,S</em>w2&#x2F;W,…, S*wn&#x2F;W。把每份分给相应的用户。如果超过了用户的需求，就回收超过的部分，假设有m个用户尚未得到满足。然后把总体回收的资源，按照目前尚未满足的用户的权重分成m份，给对应的用户。依次类推，直到没有回收的资源为止。</p>
+<p>优点：考虑到了公平性，无论是大任务还是小任务，都能相对公平的得到服务。</p>
+<p>缺点：加权的设置对平台有着更高的要求，加权不合理可能会破坏公平性。</p>
+<h3 id="容量调度（Capacity）"><a href="#容量调度（Capacity）" class="headerlink" title="容量调度（Capacity）"></a>容量调度（Capacity）</h3><p>基本思路： 首先划分多个队列， 队列资源采用容量占比的方式进行分配。每个队列设置资源最低保证和资源使用上限。如果队列中的资源有剩余或者空闲，可以暂时共享给那些需要资源的队列，而一旦该队列有新的应用程序需要资源运行，则其他队列释放的资源会归还给该队列。</p>
+<p>优点：资源可以得到最大化的利用</p>
+<p>缺点：但是小任务仍然会等待较多的时间。而且无法自定义优先级。</p>
+<h2 id="YARN的三种调度器"><a href="#YARN的三种调度器" class="headerlink" title="YARN的三种调度器"></a>YARN的三种调度器</h2><h3 id="FIFO-Scheduler（先进先出调度器）"><a href="#FIFO-Scheduler（先进先出调度器）" class="headerlink" title="FIFO Scheduler（先进先出调度器）"></a>FIFO Scheduler（先进先出调度器）</h3><ul>
+<li>FIFO先进先出调度器，同一时间队列中只有一个任务在执行。</li>
+<li>FIFO调度器以集群资源独占的方式来运行作业，这样的好处是一个作业可以充分利用所有的集群资源</li>
+</ul>
+<p>有一个很大的job1先提交，并且占据了全部的资源。那么job2提交时发现没有资源了，则job2必须等待job1执行结束，才能获得资源执行。</p>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806185321850.png" srcset="/img/loading.gif" lazyload alt="FIFO Scheduler"></p>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806185346362.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="Capacity-Scheduler（容量调度器）"><a href="#Capacity-Scheduler（容量调度器）" class="headerlink" title="Capacity Scheduler（容量调度器）"></a>Capacity Scheduler（容量调度器）</h3><ul>
+<li>层次化队列设计，每个队列内部先进先出，同一时间队列中只有一个任务在执行。队列的并行度为队列的个数。</li>
+<li>可以为每个队列分配一个资源占比</li>
+<li>空闲的资源可以分配给任何队列，出现资源竞争时又按照占比再平衡</li>
+<li>每个队列都有访问控制，用户只能提交到有权限的队列</li>
+<li>队列支持树形嵌套</li>
+<li>YARN的默认调度器</li>
+</ul>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806185513330.png" srcset="/img/loading.gif" lazyload alt="Capacity Scheduler"></p>
+<p>图示：有一个大的job1提交到queue A，并占据了全部资源。此时再提交一个小job2到queue B，因为queue A和queue B资源相互独立，job2可以立刻执行。</p>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806185542749.png" srcset="/img/loading.gif" lazyload></p>
+<p>队列支持树形嵌套：</p>
+<ul>
+<li>root[100%]<ul>
+<li>|—A[60%]<ul>
+<li>|—A.1[40%]</li>
+<li>|—A.2[60%]</li>
+</ul>
+</li>
+<li>|—B[40%]</li>
+</ul>
+</li>
+</ul>
+<p>相关参数：</p>
+<p>capacity（队列资源容量百分比）</p>
+<p>maximum-capacity（队列资源使用上限百分比）</p>
+<p>user-limit-factor（每个用户自多可使用的资源量百分比）</p>
+<h3 id="Fair-Scheduler（公平调度器）"><a href="#Fair-Scheduler（公平调度器）" class="headerlink" title="Fair Scheduler（公平调度器）"></a>Fair Scheduler（公平调度器）</h3><ul>
+<li>层次化队列设计，每个队列内部的作业案缺额分配资源，同一时间队列中有多个任务执行。队列的并行度大于等于队列的个数。</li>
+<li>可以让短的作业在合理的时间内完成，而不必一直等待长作业的完成。</li>
+<li>所有队列的资源在无竞争时是共享的</li>
+<li>作业可以设置优先级</li>
+</ul>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806185742082.png" srcset="/img/loading.gif" lazyload alt="Fair Scheduler"></p>
+<p>图示：先提交到队列A的job1占用了整个集群的资源，此时job 2提交到队列B。原先被job2占用的队列B的资源释放，job1和job2同时运行，各占一半。此时在队列B再次提交一个job3，job2和job3将同时运行，各占四分之一。</p>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806185825508.png" srcset="/img/loading.gif" lazyload></p>
+<p>在资源有限的情况下，每个job理想情况下获得的资源和实际获得的资源存在一个差距，这个差距叫缺额。</p>
+<p>同一个队列中job的缺额越大，越先获得资源优先执行。</p>
+<p>同时，还可以为job设置优先级，优先级越高，越先分配资源。</p>
+<p><strong>Capacity Scheduler和Fair Scheduler的区别</strong></p>
+<p>相同：</p>
+<p>（1）以队列划分资源</p>
+<p>（2）设定最低保证和最大使用上限</p>
+<p>（3）在某个队列空闲时可以将资源共享给其他队列。</p>
+<p>不同：</p>
+<p>（1）Fair Scheduler队列内部支持多种调度策略，包括FIFO、Fair（队列中的N个作业，每个获得该队列1 &#x2F; N的资源）、DRF（Dominant Resource Fairness）（多种资源类型e.g. CPU，内存的公平资源分配策略）</p>
+<p>（2）Fair Scheduler可以使得小应用快速获得资源，避免了饿死的情况。</p>
+<h1 id="Job提交流程"><a href="#Job提交流程" class="headerlink" title="Job提交流程"></a>Job提交流程</h1><p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806190058121.png" srcset="/img/loading.gif" lazyload alt="Job提交流程"></p>
+<ol>
+<li>客户端提交作业job.waitForCompletion启动yarnRunner</li>
+<li>yarnRunner 向rm 申请一个Application</li>
+<li>rm 返回一个资源提交路径和application_id</li>
+<li>客户端提交job所需要的资源（切片+配置信息+jar 包）到资源提交路径</li>
+<li>资源提交完毕，客户端申请运行AppMaster</li>
+<li>将用户请求初始化为task,放入队列</li>
+<li>NodeManager 从队列领取任务</li>
+<li>创建容器，启动AppMaster，读切片信息知道启动多少MapTask</li>
+<li>AppMaster下载job资源到本地AppMaster</li>
+<li>AppMaster申请运行MapTask容器</li>
+<li>NodeManager通过心跳领取到任务，创建容器</li>
+<li>NodeManager同时接受AppMaster发送来的启动脚本，启动MapTask</li>
+<li>MapTask结束后，AppMaster申请运行ReduceTask容器</li>
+<li>Reduce向Map获取对应分区的已排序数据</li>
+</ol>
+<h1 id="YARN的高级特性"><a href="#YARN的高级特性" class="headerlink" title="YARN的高级特性"></a>YARN的高级特性</h1><h2 id="Node-Label"><a href="#Node-Label" class="headerlink" title="Node Label"></a>Node Label</h2><ul>
+<li>HDFS异构存储只能设置让某些数据（以目录为单位）分别在不同的存储介质上，但是计算调度时无法保障作业运行的环境。</li>
+<li>在节点标签（Node Label）出现之前，资源申请方是无法指定特定节点的资源的，比如需要运行GPU节点，需要有SSD存储的节点等等。应用是无法指定特定节点上面的特定资源的，我们也无法对集群中的各个节点进行分区。</li>
+<li>同时，同一个集群中如果需要将作业跑在特殊的软件环境下，例如特定版本的JDK，特定版本的python库等等，我们也无法进行指定。</li>
+<li>同一个集群中新采购的机器具有大内存和高CPU，机型的不同或者网络环境的不同等等导致同一个作业的不同任务执行时间差异过大。</li>
+<li>同一个集群跨越不同机房，应尽量避免同一个作业跨机房执行的需求。</li>
+</ul>
+<h3 id="Node-Label的类型"><a href="#Node-Label的类型" class="headerlink" title="Node Label的类型"></a>Node Label的类型</h3><p>目前只有Capacity Scheduler支持该功能。Fair Scheduler开发进行中（YARN-2497）</p>
+<p>Node Label有两种类型：</p>
+<ul>
+<li>节点分区（Node Partition）<ul>
+<li>一个节点只属于一个分区</li>
+<li>和资源计划有关</li>
+</ul>
+</li>
+<li>节点限制（Node Constraints）<ul>
+<li>一个节点可以分配多个限制条件</li>
+<li>和资源计划无关</li>
+</ul>
+</li>
+</ul>
+<p>![Node Label类型](&#x2F;Users&#x2F;liuyi05&#x2F;Library&#x2F;Application Support&#x2F;typora-user-images&#x2F;image-20220806190506744.png)</p>
+<h3 id="Node-Label的特性"><a href="#Node-Label的特性" class="headerlink" title="Node Label的特性"></a>Node Label的特性</h3><ul>
+<li>给集群中的node打上标签，每个node只能有一个标签。</li>
+<li>整个集群node划分为互斥的若干分区，没有设置标签的node属于DEFAULT分区。</li>
+<li>队列可以绑定多个标签，不设置默认标签的队列，使用DEFAULT分区的node。</li>
+<li>通过队列的默认标签，和指定特定标签，实现节点分配控制</li>
+</ul>
+<h2 id="YARN-HA"><a href="#YARN-HA" class="headerlink" title="YARN HA"></a>YARN HA</h2><p>RM存在单点故障问题。YARN的HA架构和HDFS HA类似，需要启动两个ResourceManager，这两个ResourceManager会向ZooKeeper集群注册，通过ZooKeeper管理它们的状态（Active或Standby）并进行自动故障转移。</p>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806190634986.png" srcset="/img/loading.gif" lazyload alt="YARN HA"></p>
+<h3 id="ZKFC和RMStateStore"><a href="#ZKFC和RMStateStore" class="headerlink" title="ZKFC和RMStateStore"></a>ZKFC和RMStateStore</h3><ul>
+<li>和HDFS HA的ZKFC不同，这里的ZKFC是RM内部的一个线程</li>
+<li>ZKFC线程定期向zk发送心跳</li>
+<li>RMStateStore存储在zk的&#x2F;rmstore目录下，相当于一个文件夹</li>
+<li>RM将状态写入RMStateStore中</li>
+</ul>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806190720439.png" srcset="/img/loading.gif" lazyload></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" class="category-chain-item">大数据</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/" class="category-chain-item">hadoop</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/06/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/MapReduce/" title="MapReduce">
+                        <span class="hidden-mobile">MapReduce</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

@@ -16,21 +16,34 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Archives">
-<meta property="og:url" content="http://example.com/archives/2022/index.html">
+    <meta name="description" content="Hadoop简介 Hadoop是Apache的一个开源的分布式计算平台，核心是以HDFS分布式文件系统和MapReduce分布式计算框架构成，为用户提供了一套底层透明的分布式基础设施 Hadoop框架中最核心设计就是：HDFS和MapReduce。HDFS提供了海量数据的存储，MapReduce提供了对数据的计算。 HDFS是Hadoop分布式文件系统，具有高容错性、高伸缩性，允许用户基于廉价硬件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop">
+<meta property="og:url" content="http://example.com/2022/08/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/Hadoop/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Hadoop简介 Hadoop是Apache的一个开源的分布式计算平台，核心是以HDFS分布式文件系统和MapReduce分布式计算框架构成，为用户提供了一套底层透明的分布式基础设施 Hadoop框架中最核心设计就是：HDFS和MapReduce。HDFS提供了海量数据的存储，MapReduce提供了对数据的计算。 HDFS是Hadoop分布式文件系统，具有高容错性、高伸缩性，允许用户基于廉价硬件">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/pasted-0.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806184301675.png">
+<meta property="article:published_time" content="2022-08-05T15:26:00.000Z">
+<meta property="article:modified_time" content="2022-08-06T10:43:12.297Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/images/pasted-0.png">
   
   
   
-  <title>Archives - Hexo</title>
+  <title>Hadoop - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
 
@@ -186,9 +199,49 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Archives"></span>
+            <span id="subtitle" data-typed-text="Hadoop"></span>
           
         </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-05 23:26" pubdate>
+          August 5, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          388 words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          4 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
 
         
       </div>
@@ -204,100 +257,156 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">41 posts in total</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2022</p>
-    
-    <a href="/2022/08/06/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/YARN/" class="list-group-item list-group-item-action">
-      <time>08-06</time>
-      <div class="list-group-item-title">YARN</div>
-    </a>
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Hadoop</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Hadoop简介"><a href="#Hadoop简介" class="headerlink" title="Hadoop简介"></a>Hadoop简介</h2><ul>
+<li>Hadoop是Apache的一个开源的分布式计算平台，核心是以HDFS分布式文件系统和MapReduce分布式计算框架构成，为用户提供了一套底层透明的分布式基础设施</li>
+<li>Hadoop框架中最核心设计就是：HDFS和MapReduce。HDFS提供了海量数据的存储，MapReduce提供了对数据的计算。</li>
+<li>HDFS是Hadoop分布式文件系统，具有高容错性、高伸缩性，允许用户基于廉价硬件部署，构建分布式存储系统，为分布式计算存储提供了底层支持</li>
+<li>MapReduce提供简单的API，允许用户在不了解底层细节的情况下，开发分布式并行程序，利用大规模集群资源，解决传统单机无法解决的大数据处理问题<ul>
+<li>设计思想起源于Google GFS、MapReduce Paper</li>
+</ul>
+</li>
+<li>Doug Cutting在Yahoo开发，2008年贡献给Apache基金会</li>
+</ul>
+<h2 id="Hadoop项目组件"><a href="#Hadoop项目组件" class="headerlink" title="Hadoop项目组件"></a>Hadoop项目组件</h2><p><img src="/images/pasted-0.png" srcset="/img/loading.gif" lazyload alt="Hadoop项目组件"></p>
+<h1 id="Hadoop2-0技术栈"><a href="#Hadoop2-0技术栈" class="headerlink" title="Hadoop2.0技术栈"></a>Hadoop2.0技术栈</h1><p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806184301675.png" srcset="/img/loading.gif" lazyload alt="image-20220806184301675"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
   
     
-    <a href="/2022/08/06/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/MapReduce/" class="list-group-item list-group-item-action">
-      <time>08-06</time>
-      <div class="list-group-item-title">MapReduce</div>
-    </a>
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" class="category-chain-item">大数据</a>
   
-    
-    <a href="/2022/08/06/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" class="list-group-item list-group-item-action">
-      <time>08-06</time>
-      <div class="list-group-item-title">关注</div>
-    </a>
   
+    <span>></span>
     
-    <a href="/2022/08/06/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" class="list-group-item list-group-item-action">
-      <time>08-06</time>
-      <div class="list-group-item-title">分布式锁</div>
-    </a>
+  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/" class="category-chain-item">hadoop</a>
   
-    
-    <a href="/2022/08/06/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" class="list-group-item list-group-item-action">
-      <time>08-06</time>
-      <div class="list-group-item-title">分布式事务</div>
-    </a>
   
-    
-    <a href="/2022/08/06/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/" class="list-group-item list-group-item-action">
-      <time>08-06</time>
-      <div class="list-group-item-title">分布式缓存</div>
-    </a>
+
   
+
+      </span>
     
-    <a href="/2022/08/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" class="list-group-item list-group-item-action">
-      <time>08-06</time>
-      <div class="list-group-item-title">工厂模式</div>
-    </a>
   
-    
-    <a href="/2022/08/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" class="list-group-item list-group-item-action">
-      <time>08-06</time>
-      <div class="list-group-item-title">单例模式</div>
-    </a>
+</span>
+
+    </div>
   
-    
-    <a href="/2022/08/06/%E7%AE%97%E6%B3%95/DFS/" class="list-group-item list-group-item-action">
-      <time>08-06</time>
-      <div class="list-group-item-title">DFS</div>
-    </a>
-  
-    
-    <a href="/2022/08/06/%E7%AE%97%E6%B3%95/BFS/" class="list-group-item list-group-item-action">
-      <time>08-06</time>
-      <div class="list-group-item-title">BFS</div>
-    </a>
   
 </div>
 
 
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2022/page/2/#board">2</a><a class="page-number" href="/archives/2022/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2022/page/5/#board">5</a><a class="extend next" rel="next" href="/archives/2022/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
+              
 
-
-
-
-              </div>
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/08/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/spark/" title="spark">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">spark</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/05/%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F/%E6%A0%87%E7%AD%BE/" title="标签">
+                        <span class="hidden-mobile">标签</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
             </div>
-          </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
 
     
@@ -391,6 +500,72 @@
 
 
 
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
 

@@ -32,8 +32,10 @@
 <meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806180511743.png">
 <meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806180838139.png">
 <meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806180942382.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806182049440.png">
+<meta property="og:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806182553939.png">
 <meta property="article:published_time" content="2022-08-06T09:31:38.000Z">
-<meta property="article:modified_time" content="2022-08-06T10:11:20.477Z">
+<meta property="article:modified_time" content="2022-08-06T10:29:10.881Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806174126232.png">
@@ -229,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3k words
+          4.5k words
         
       </span>
     
@@ -240,7 +242,7 @@
         
         
         
-          26 mins
+          38 mins
         
       </span>
     
@@ -302,7 +304,7 @@
 <li>并发只在同一个作业中发生</li>
 <li>不同作业的数据访问不需要协调</li>
 </ul>
-<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806174126232.png" srcset="/img/loading.gif" lazyload alt="image-20220806174126232"></p>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806174126232.png" srcset="/img/loading.gif" lazyload alt="MapReduce 编程模型"></p>
 <h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><ul>
 <li>map()函数以key&#x2F;value对作为输入。</li>
 <li>产生另外一系列key&#x2F;value对作为中间输出写入本地磁盘。</li>
@@ -310,7 +312,7 @@
 <li>用户可设定聚集策略，默认情况下是对key值进行哈希取模。</li>
 <li>reduce()函数以key及对应的value列表作为输入，经合并key相同的value值后，产生另外一系列key&#x2F;value对作为最终输出写入HDFS。</li>
 </ul>
-<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806174307170.png" srcset="/img/loading.gif" lazyload alt="image-20220806174307170"></p>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806174307170.png" srcset="/img/loading.gif" lazyload alt="MapReduce 流程"></p>
 <h2 id="数据切分（Split）"><a href="#数据切分（Split）" class="headerlink" title="数据切分（Split）"></a>数据切分（Split）</h2><h3 id="作用："><a href="#作用：" class="headerlink" title="作用："></a>作用：</h3><ol>
 <li><p>按照某个策略将数据切分成若干个split，确定Map Task个数</p>
 </li>
@@ -374,14 +376,14 @@
 <li>Block是文件在物理上的划分，HDFS系统上就是按照block来存储的。一个block的多个备份存储在不同的节点上。</li>
 <li>一个split可能包含多个block，但一个block不一定只属于一个split。比如：split1完全包含block1，部分包含block2；block2一部分属于split1，一部分属于split2。</li>
 </ul>
-<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806174517412.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806174517412.png" srcset="/img/loading.gif" lazyload alt="split和block"></p>
 <h2 id="Host选择算法"><a href="#Host选择算法" class="headerlink" title="Host选择算法"></a>Host选择算法</h2><ul>
 <li>InputSplit对象包含四个属性，分别是文件名、起始位置、Split长度和节点列表；构成一个四元组&lt;file, start, length, hosts&gt;。</li>
 <li>节点列表是关键，关系到任务的本地性（locality）。</li>
 <li>Hadoop将数据本地性按照代价划分成三个等级：Node、Rack和Any。</li>
 <li>所谓任务的本地性，即优先让空闲资源处理本节点上的数据，如果节点上没有可处理的数据，则处理同一个机架上的数据，最差情况是处理其他机架上的数据。</li>
 </ul>
-<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806175401194.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806175401194.png" srcset="/img/loading.gif" lazyload alt="Host选择"></p>
 <h2 id="排序（Sort）"><a href="#排序（Sort）" class="headerlink" title="排序（Sort）"></a>排序（Sort）</h2><p>MapReduce的Sort分为两种：</p>
 <ul>
 <li>Map Task中Spill数据的排序<ul>
@@ -398,8 +400,8 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806175534696.png" srcset="/img/loading.gif" lazyload></p>
-<h1 id="MapReduce计算框架"><a href="#MapReduce计算框架" class="headerlink" title="MapReduce计算框架"></a>MapReduce计算框架</h1><h2 id="MapReduce-1-0"><a href="#MapReduce-1-0" class="headerlink" title="MapReduce 1.0"></a>MapReduce 1.0</h2><h3 id="MapReduce分布式计算框架："><a href="#MapReduce分布式计算框架：" class="headerlink" title="MapReduce分布式计算框架："></a>MapReduce分布式计算框架：</h3><ul>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806175534696.png" srcset="/img/loading.gif" lazyload alt="排序"></p>
+<h1 id="MapReduce计算框架"><a href="#MapReduce计算框架" class="headerlink" title="MapReduce计算框架"></a>MapReduce计算框架</h1><h2 id="MapReduce分布式计算框架"><a href="#MapReduce分布式计算框架" class="headerlink" title="MapReduce分布式计算框架"></a>MapReduce分布式计算框架</h2><ul>
 <li>JobTracker：<ul>
 <li>负责集群资源监控和作业调度</li>
 <li>通过心跳监控所有TaskTracker的健康状况</li>
@@ -420,8 +422,8 @@
 </ul>
 </li>
 </ul>
-<h3 id="MapReduce原理概述"><a href="#MapReduce原理概述" class="headerlink" title="MapReduce原理概述"></a>MapReduce原理概述</h3><p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806180154910.png" srcset="/img/loading.gif" lazyload alt="原理概述"></p>
-<h3 id="MR-Job生命周期"><a href="#MR-Job生命周期" class="headerlink" title="MR Job生命周期"></a>MR Job生命周期</h3><ol>
+<h2 id="MapReduce原理概述"><a href="#MapReduce原理概述" class="headerlink" title="MapReduce原理概述"></a>MapReduce原理概述</h2><p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806180154910.png" srcset="/img/loading.gif" lazyload alt="原理概述"></p>
+<h2 id="MR-Job生命周期"><a href="#MR-Job生命周期" class="headerlink" title="MR Job生命周期"></a>MR Job生命周期</h2><ol>
 <li><p>作业提交与初始化</p>
 <p>a. 首先JobClient将作业的相关文件上传到HDFS</p>
 <p>b. 然后JobClient通知JobTracker</p>
@@ -441,7 +443,7 @@
 </li>
 </ol>
 <p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806180511743.png" srcset="/img/loading.gif" lazyload alt="MapReduce Job生命周期"></p>
-<h3 id="JobTracker概述"><a href="#JobTracker概述" class="headerlink" title="JobTracker概述"></a>JobTracker概述</h3><p>JobTracker主要负责作业控制和资源管理。JobTracker会跟踪任务的执行进度、资源使用量等信息，并将这些信息告诉任务调度器，而调度器会在资源出现空闲时，选择合适的任务使用这些资源。</p>
+<h2 id="JobTracker"><a href="#JobTracker" class="headerlink" title="JobTracker"></a>JobTracker</h2><p>JobTracker主要负责作业控制和资源管理。JobTracker会跟踪任务的执行进度、资源使用量等信息，并将这些信息告诉任务调度器，而调度器会在资源出现空闲时，选择合适的任务使用这些资源。</p>
 <p>JobTracker采用观察者设计模式将新作业通知TaskScheduler</p>
 <p>JobTacker涉及MR生命周期的步骤有：</p>
 <ol>
@@ -455,9 +457,9 @@
 <p>b. 检查用户是否具有指定队列的作业提交权限</p>
 <p>c. 检查作业配置的内存使用量是否合理</p>
 <p>d. 通知任务调度器按照一定策略调度任务*</p>
-<h4 id="JobTracker核心功能—-作业控制"><a href="#JobTracker核心功能—-作业控制" class="headerlink" title="JobTracker核心功能— 作业控制"></a>JobTracker核心功能— 作业控制</h4><p>JobTracker在其内部以“三层多叉树”的方式描述和跟踪每个作业的运行状态</p>
-<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806180838139.png" srcset="/img/loading.gif" lazyload></p>
-<h4 id="JobTracker核心功能—-资源管理"><a href="#JobTracker核心功能—-资源管理" class="headerlink" title="JobTracker核心功能— 资源管理"></a>JobTracker核心功能— 资源管理</h4><p>JobTracker不断接收各个TaskTracker周期性发送过来的资源量和任务状态等信息，为TaskTracker分配最合适的任务。</p>
+<h3 id="JobTracker核心功能—-作业控制"><a href="#JobTracker核心功能—-作业控制" class="headerlink" title="JobTracker核心功能— 作业控制"></a>JobTracker核心功能— 作业控制</h3><p>JobTracker在其内部以“三层多叉树”的方式描述和跟踪每个作业的运行状态</p>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806180838139.png" srcset="/img/loading.gif" lazyload alt="作业控制"></p>
+<h3 id="JobTracker核心功能—-资源管理"><a href="#JobTracker核心功能—-资源管理" class="headerlink" title="JobTracker核心功能— 资源管理"></a>JobTracker核心功能— 资源管理</h3><p>JobTracker不断接收各个TaskTracker周期性发送过来的资源量和任务状态等信息，为TaskTracker分配最合适的任务。</p>
 <p>Hadoop引入了“slot”概念表示各个节点上的计算资源。为了简化资源管理，Hadoop将各个节点上的资源(CPU、内存和磁盘等)等量切分成若干份，每一份用一个slot表示，同时规定一个Task可根据实际需要占用多个slot。</p>
 <p>三级调度模型：</p>
 <ol>
@@ -465,7 +467,33 @@
 <li>选择一个作业</li>
 <li>选择一个任务</li>
 </ol>
-<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806180942382.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806180942382.png" srcset="/img/loading.gif" lazyload alt="资源管理"></p>
+<h2 id="TaskTacker"><a href="#TaskTacker" class="headerlink" title="TaskTacker"></a>TaskTacker</h2><p>TaskTracker是JobTracker与Task之间的“沟通桥梁”:</p>
+<ul>
+<li>它从JobTracker端接收并执行各种命令，比如运行任务、提交任务、杀死任务等</li>
+<li>它将本节点上的各个任务状态通过周期性心跳汇报给JobTracker</li>
+</ul>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806182049440.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="TaskTracker核心功能介绍—-心跳机制"><a href="#TaskTracker核心功能介绍—-心跳机制" class="headerlink" title="TaskTracker核心功能介绍— 心跳机制"></a>TaskTracker核心功能介绍— 心跳机制</h3><p>心跳是Jobtracker和Tasktracker的桥梁，它实际上是一个RPC函数，Tasktracker周期性的调用该函数汇报节点和任务状态信息，从而形成心跳。在Hadoop中，心跳主要有三个作用：</p>
+<p>1、判断Tasktracker是否活着</p>
+<p>2、及时让Jobtracker获取各个节点上的资源使用情况和任务运行状态</p>
+<p>3、为Tasktracker分配任务</p>
+<p>Tasktracker周期性的调用RPC函数heartbeat向Jobtracker汇报信息和领取任务，函数定义是：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">HeartbeatResponse <span class="hljs-title function_">heartbeat</span><span class="hljs-params">(TaskTrackerStatus status, <span class="hljs-type">boolean</span> restarted, <span class="hljs-type">boolean</span> initialContact, <span class="hljs-type">boolean</span> acceptNewTasks, <span class="hljs-type">short</span> responseId)</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="容错机制"><a href="#容错机制" class="headerlink" title="容错机制"></a>容错机制</h2><p>在1.0.0以及之前版本中，Hadoop采用了任务级别的恢复机制，即以任务为基本单位进行恢复，这种机制是基于事务型日志完成作业恢复的，它只关注两种任务：运行完成的任务和未运行完成的任务。</p>
+<p>一旦JobTracker重启，则可从日志中恢复作业的运行状态，其中已经运行完成的任务无须再运行，而未开始运行或者运行中的任务需重新运行。这种方案实现比较复杂，需要处理的特殊情况比较多。</p>
+<p>为了简化设计，从0.21.0版本开始，Hadoop采用了作业级别的恢复机制。该机制不再关注各个任务的运行状态，而是以作业为单位进行恢复，它只关注两种作业状态：运行完成或者未运行完成。当JobTracker重启后，凡是未运行完成的作业将自动被重新提交到Hadoop中重新运行。</p>
+<h3 id="JobTracker的容错"><a href="#JobTracker的容错" class="headerlink" title="JobTracker的容错"></a>JobTracker的容错</h3><p>作业恢复的机制处理比较简单。每个新的作业(Job)会在JobTracker的工作目录下为该作业创建一个以该作业的JobId为命名的目录，目录底下放该作业的Job-info和JobToken文件。如果该作业成功运行结束，那么就会在作业的Cleanup工作中删除掉该文件夹。</p>
+<p>所以，当某个时刻JobTracker如果突然因为故障重启了，那么该工作目录下如果有JobId工作目录，就说明重启之前还有作业未运行结束（因为运行结束的Job都会把自己的目录清除掉），此时就会把目录中包含的作业重新提交运行，并且JobTracker会把这些重新提交运行的Job的Id信息通过心跳信息的回复告知TaskTracker。</p>
+<p>那些之前就已经运行在TaskTracker上的任务就是根据TaskID和JobID来更新JobTracker中的作业和任务的信息状态的。原本就正在运行的任务仍然能够正常的更新JobTracker。已经运行结束的Task会把新提交的作业的Task直接更新为运行结束。</p>
+<p><img src="https://fyh-blog-picture.oss-cn-hangzhou.aliyuncs.com/img/image-20220806182553939.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="TaskTracker的容错"><a href="#TaskTracker的容错" class="headerlink" title="TaskTracker的容错"></a>TaskTracker的容错</h3><p>如果一个TaskTracker故障了，那我们把该TaskTracker上所有满足以下两个条件的任务杀掉，并将它们重新加入任务等待队列中，以便被调度到其他健康节点上重新运行。</p>
+<ul>
+<li>条件1 Task所属Job处于运行或者等待状态。</li>
+<li>条件2 未运行完成的Task或者Reduce Task数目不为零的作业中已运行完成的Map Task。</li>
+</ul>
+<p>所有运行完成的Reduce Task和无Reduce Task的Job中已运行完成的Map Task无须重新运行，因为它们将结果直接写入HDFS中。</p>
 
                 
               </div>
@@ -512,6 +540,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/08/06/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/YARN/" title="YARN">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">YARN</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
