@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://example.com/2022/08/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/Spark/Spark/</loc>
+    <lastmod>2022-08-08</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2022/08/07/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hive/Hive/</loc>
+    <lastmod>2022-08-07</lastmod>
+  </url>
+  <url>
     <loc>http://example.com/2022/08/06/%E5%A4%A7%E6%95%B0%E6%8D%AE/HBase/HBase/</loc>
     <lastmod>2022-08-06</lastmod>
   </url>
@@ -73,7 +81,7 @@
     <lastmod>2022-08-05</lastmod>
   </url>
   <url>
-    <loc>http://example.com/2022/08/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/tidb/</loc>
+    <loc>http://example.com/2022/08/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/OLAP/tidb/</loc>
     <lastmod>2022-08-05</lastmod>
   </url>
   <url>
@@ -93,7 +101,7 @@
     <lastmod>2022-08-05</lastmod>
   </url>
   <url>
-    <loc>http://example.com/2022/08/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/ClickHouse/</loc>
+    <loc>http://example.com/2022/08/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/OLAP/ClickHouse/</loc>
     <lastmod>2022-08-05</lastmod>
   </url>
   <url>
@@ -165,11 +173,7 @@
     <lastmod>2022-08-05</lastmod>
   </url>
   <url>
-    <loc>http://example.com/2022/08/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/spark/</loc>
-    <lastmod>2022-08-05</lastmod>
-  </url>
-  <url>
-    <loc>http://example.com/2022/08/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/flink/</loc>
+    <loc>http://example.com/2022/08/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/Flink/flink/</loc>
     <lastmod>2022-08-05</lastmod>
   </url>
 </urlset> 
